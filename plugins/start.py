@@ -120,7 +120,7 @@ REPLY_ERROR = """<code>Use this command as a reply to any telegram message witho
     
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    url = client.force_sub["links"]
+    url = await client.force_sub["links"]
     buttons = [
         [
             Button(
