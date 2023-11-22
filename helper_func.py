@@ -11,9 +11,9 @@ from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 from pyrogram.errors import FloodWait
 
 
-def is_subscribed(client, user_id, channel):
+async def is_subscribed(client, user_id, channel):
     try:
-        member = client.get_chat_member(chat_id = channel, user_id = user_id)
+        member = await client.get_chat_member(chat_id = channel, user_id = user_id)
     except UserNotParticipant:
         return False
 
