@@ -62,7 +62,7 @@ class Bot(Client):
 
         if self.force_sub["active"]:
             self.force_sub["ids"] = [FORCE_SUB_CHANNELS]
-            self.force_sub["links"] = [self.parse_invite_link(FORCE_SUB_CHANNELS)] 
+            # self.force_sub["links"] = [self.parse_invite_link(FORCE_SUB_CHANNELS)] 
  
         try:
             db_channel = await self.get_chat(CHANNEL_ID)

@@ -7,7 +7,7 @@ import asyncio
 
 from bot import Bot
 from config import (ADMINS, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, FORCE_MSG,
-                    PROTECT_CONTENT, START_MSG)
+                    PROTECT_CONTENT, START_MSG, INVITE_LINK)
 from database.database import add_user, del_user, full_userbase, present_user
 from helper_func import decode, encode, get_messages, subscribed
 from pyrogram import Client, __version__, filters
@@ -120,7 +120,7 @@ REPLY_ERROR = """<code>Use this command as a reply to any telegram message witho
     
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    url = await client.force_sub["links"]
+    url = INVITE_LINK
     buttons = [
         [
             Button(

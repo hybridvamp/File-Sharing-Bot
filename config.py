@@ -33,6 +33,7 @@ DB_NAME = os.environ.get("DATABASE_NAME", "iufilebot")
 
 #force sub channel id, if you want enable force sub
 FORCE_SUB_CHANNELS = os.environ.get("FORCE_SUB_CHANNELS", "0")
+INVITE_LINK = os.environ.get("INVITE_LINK", "")
 
 try:
     FORCE_SUB_CHANNELS = int(FORCE_SUB_CHANNELS)
