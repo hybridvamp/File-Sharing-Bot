@@ -37,7 +37,7 @@ async def batch(client: Client, message: Message):
     if None in [first_message, second_message]:
         return
     else:
-        f_msg_id, first_message = first_message
+        f_msg_id = first_message[1]
         s_msg_id, second_message = second_message
 
 
