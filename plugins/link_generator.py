@@ -31,8 +31,8 @@ async def recieve_forwarded_msg(client, message, text="the message"):
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & filters.command('batch'))
 async def batch(client: Client, message: Message):
-    first_message = recieve_forwarded_msg(client, message, "the first message")
-    second_message = recieve_forwarded_msg(client, message, "the second message")
+    first_message = await recieve_forwarded_msg(client, message, "the first message")
+    second_message = await recieve_forwarded_msg(client, message, "the second message")
     
     if None in [first_message, second_message]:
         return
@@ -47,7 +47,7 @@ async def batch(client: Client, message: Message):
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & filters.command('genlink'))
 async def link_generator(client: Client, message: Message):
-    message = recieve_forwarded_msg(client, message)
+    message = await recieve_forwarded_msg(client, message)
     
     if message is None:
         return
