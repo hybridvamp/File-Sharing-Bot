@@ -1,4 +1,4 @@
-#(©)Codexbotz
+#(©)dramaost
 
 import base64
 import re

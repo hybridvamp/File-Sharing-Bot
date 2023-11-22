@@ -1,4 +1,4 @@
-#(©)Codexbotz
+#(©)dramaost
 
 from aiohttp import web
 from plugins import web_server
@@ -35,7 +35,7 @@ class Bot(Client):
         self.LOGGER = LOGGER(__name__)
     
     async def panic(self): # for use in plugins
-        self.LOGGER.info("\nBot Stopped. Join https://t.me/CodeXBotzSupport for support")
+        self.LOGGER.info("\nBot Stopped. Join https://t.me/dramaost for support")
         sys.exit()
     
     async def parse_invite_link(self, channel):
@@ -77,7 +77,7 @@ class Bot(Client):
             self.panic()
 
         self.set_parse_mode(ParseMode.HTML)
-        self.LOGGER.info(f"Bot Running..!\n\nCreated by \nhttps://t.me/CodeXBotz")
+        self.LOGGER.info(f"Bot Running..!\n\nCreated by \n(c) Hybrid")
         self.LOGGER.info()
         self.username = usr_bot_me.username
         #web-response

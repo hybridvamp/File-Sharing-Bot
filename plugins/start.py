@@ -1,4 +1,4 @@
-#(©)CodeXBotz
+#(©)dramaost
 
 
 
@@ -88,7 +88,7 @@ async def start_command(client: Client, message: Message):
         reply_markup = Markup(
             [
                 [
-                    Button("😊 About Me", callback_data = "about"),
+                    Button("ℹ️ About Me", callback_data = "about"),
                     Button("🔒 Close", callback_data = "close")
                 ]
             ]
