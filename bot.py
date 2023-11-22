@@ -77,7 +77,6 @@ class Bot(Client):
 
         self.set_parse_mode(ParseMode.HTML)
         self.LOGGER.info(f"Bot Running..!\n\nCreated by \n(c) Hybrid")
-        self.LOGGER.info()
         self.username = usr_bot_me.username
         #web-response
         app = web.AppRunner(await web_server())
