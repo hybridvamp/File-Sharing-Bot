@@ -13,7 +13,7 @@ from pyrogram.errors import FloodWait
 
 def is_subscribed(client, user_id, channel):
     try:
-        member = await client.get_chat_member(chat_id = channel, user_id = user_id)
+        member = client.get_chat_member(chat_id = channel, user_id = user_id)
     except UserNotParticipant:
         return False
 
