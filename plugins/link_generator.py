@@ -40,7 +40,14 @@ async def batch(client: Client, message: Message):
         f_msg_id = str(first_message[0])  # Convert message ID to string
         s_msg_id, second_message = second_message
 
-    string = f"get-{f_msg_id * abs(client.db_channel.id)}-{s_msg_id * abs(client.db_channel.id)}"
+    abs_channel_id = abs(client.db_channel.id)
+    
+    # Create the string in parts
+    part1 = f"get-{f_msg_id * abs_channel_id}-"
+    part2 = s_msg_id * abs_channel_id
+    
+    string = part1 + str(part2)
+    
     await reply_share_url(client, string, second_message)
 
 
