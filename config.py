@@ -42,7 +42,7 @@ except ValueError:
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "10"))
 
 #start message
-START_MSG = os.environ.get("START_MESSAGE", "Hello {first}!\n\nI am **IU The File Bot** Madde specially for @Dramaost for file sharing purposes")
+START_MSG = os.environ.get("START_MESSAGE", "Hello {first}!\n\nI am a File Sharing Bot Made specially for @Dramaost for file sharing purposes")
 try:
     ADMINS=[]
     for x in (os.environ.get("ADMINS", "").split()):
