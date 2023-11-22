@@ -28,7 +28,7 @@ async def subscribed_filter(filter, client, update: Update) -> bool:
     if user_id in ADMINS:
         return True
     
-    return all(is_subscribed(client, user_id, channel) for channel in client.force_sub["ids"])
+    return all(await is_subscribed(client, user_id, channel) for channel in client.force_sub["ids"])
 
 subscribed = filters.create(subscribed_filter)
 
