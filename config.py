@@ -32,7 +32,12 @@ DB_URI = os.environ.get("DATABASE_URL", "")
 DB_NAME = os.environ.get("DATABASE_NAME", "iufilebot")
 
 #force sub channel id, if you want enable force sub
-FORCE_SUB_CHANNELS = int(os.environ.get("FORCE_SUB_CHANNELS", "0"))
+FORCE_SUB_CHANNELS = os.environ.get("FORCE_SUB_CHANNELS", "0")
+
+try:
+    FORCE_SUB_CHANNELS = int(FORCE_SUB_CHANNELS)
+except ValueError:
+    print(f"Invalid value for FORCE_SUB_CHANNELS: {FORCE_SUB_CHANNELS}")
 
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "10"))
 
