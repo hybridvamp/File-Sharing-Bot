@@ -11,7 +11,7 @@ from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 from pyrogram.errors import FloodWait
 
 
-async def is_subscribed(client, user_id, channel):
+def is_subscribed(client, user_id, channel):
     try:
         member = await client.get_chat_member(chat_id = channel, user_id = user_id)
     except UserNotParticipant:
@@ -28,7 +28,7 @@ async def subscribed_filter(filter, client, update: Update) -> bool:
     if user_id in ADMINS:
         return True
     
-    return all(await is_subscribed(client, user_id, channel) for channel in client.force_sub["ids"])
+    return all(is_subscribed(client, user_id, channel) for channel in client.force_sub["ids"])
 
 subscribed = filters.create(subscribed_filter)
 
