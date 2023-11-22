@@ -61,7 +61,7 @@ class Bot(Client):
         }
         
         if self.force_sub["active"]:
-            ids = FORCE_SUB_CHANNELS #.split(";") #
+            ids = FORCE_SUB_CHANNELS.split(";") #
             self.force_sub["ids"] = ids         # This could've beed a nice walrus operator, but its only Python 3.11+ :(
             self.force_sub["links"] = [self.parse_invite_link(id) for id in ids]
             
