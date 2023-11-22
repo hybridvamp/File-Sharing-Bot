@@ -119,13 +119,14 @@ REPLY_ERROR = """<code>Use this command as a reply to any telegram message witho
     
     
 @Bot.on_message(filters.command('start') & filters.private)
-async def not_joined(client: Client, message: Message):  
+async def not_joined(client: Client, message: Message):
+    url = client.force_sub["links"]
     buttons = [
         [
             Button(
                 "Join Channel",
                 url = url)
-        ] for url in client.force_sub["links"]
+        ]
     ]
     try:
         buttons.append(
