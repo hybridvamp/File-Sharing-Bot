@@ -37,9 +37,8 @@ async def batch(client: Client, message: Message):
     if None in [first_message, second_message]:
         return
     else:
-        f_msg_id = first_message[0]
+        f_msg_id = str(first_message[0])  # Convert message ID to string
         s_msg_id, second_message = second_message
-
 
     string = f"get-{f_msg_id * abs(client.db_channel.id)}-{s_msg_id * abs(client.db_channel.id)}"
     await reply_share_url(client, string, second_message)
