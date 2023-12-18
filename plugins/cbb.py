@@ -31,7 +31,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         except:
             pass
     elif data == "start":
-        reply_markup = Markup(
+        reply_markup = InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton("ℹ️ About Me", callback_data = "about"),
@@ -55,7 +55,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
             quote = True
         )
     elif data == "donate":
-        reply_markup = Markup(
+        reply_markup = InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton("🏠 Home", callback_data = "start"),
