@@ -7,7 +7,7 @@ import asyncio
 
 from bot import Bot
 from config import (ADMINS, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, FORCE_MSG,
-                    PROTECT_CONTENT, START_MSG, INVITE_LINK)
+                    PROTECT_CONTENT, START_MSG, INVITE_LINK, LOG_ID)
 from database.database import add_user, del_user, full_userbase, present_user
 from helper_func import decode, encode, get_messages, subscribed
 from pyrogram import Client, __version__, filters
@@ -24,6 +24,7 @@ async def start_command(client: Client, message: Message):
     if not await present_user(id):
         try:
             await add_user(id)
+            await client.send_message(LOG_ID, f"#IUBot #NewUser \n\nUser: {message.from_user.mention}\nID: {id}")
         except:
             pass
     text = message.text
@@ -90,6 +91,9 @@ async def start_command(client: Client, message: Message):
                 [
                     Button("ℹ️ About Me", callback_data = "about"),
                     Button("🔒 Close", callback_data = "close")
+                ],
+                [
+                    InlineKeyboardButton("💰 Donate Us", callback_data = "donate")
                 ]
             ]
         )
@@ -120,6 +124,13 @@ REPLY_ERROR = """<code>Use this command as a reply to any telegram message witho
     
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
+    id = message.from_user.id
+    if not await present_user(id):
+        try:
+            await add_user(id)
+            await client.send_message(LOG_ID, f"#IUBot #NewUser \n\nUser: {message.from_user.mention}\nID: {id}")
+        except:
+            pass
     url = INVITE_LINK
     buttons = [
         [

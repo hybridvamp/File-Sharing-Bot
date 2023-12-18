@@ -32,7 +32,7 @@ async def recieve_forwarded_msg(client, message, text="the message"):
 @Bot.on_message(filters.private & filters.user(ADMINS) & filters.command('batch'))
 async def batch(client: Client, message: Message):
     first_message = await recieve_forwarded_msg(client, message, "the first message")
-    second_message = await recieve_forwarded_msg(client, message, "the second message")
+    second_message = await recieve_forwarded_msg(client, message, "the last message")
     
     if None in [first_message, second_message]:
         return

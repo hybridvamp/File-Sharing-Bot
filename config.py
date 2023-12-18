@@ -20,6 +20,7 @@ API_HASH = os.environ.get("API_HASH", "")
 
 #Your db channel Id
 CHANNEL_ID = int(os.environ.get("CHANNEL_ID", ""))
+LOG_ID = int(os.environ.get("LOG_ID", ""))
 
 #OWNER ID
 OWNER_ID = int(os.environ.get("OWNER_ID", ""))
@@ -32,7 +33,7 @@ DB_URI = os.environ.get("DATABASE_URL", "")
 DB_NAME = os.environ.get("DATABASE_NAME", "iufilebot")
 
 #force sub channel id, if you want enable force sub
-FORCE_SUB_CHANNELS = os.environ.get("FORCE_SUB_CHANNELS", "0")
+FORCE_SUB_CHANNELS = os.environ.get("FORCE_SUB_CHANNELS", False)
 INVITE_LINK = os.environ.get("INVITE_LINK", "")
 
 try:
@@ -65,6 +66,25 @@ DISABLE_CHANNEL_BUTTON = os.environ.get("DISABLE_CHANNEL_BUTTON", None) == 'True
 
 BOT_STATS_TEXT = "<b>BOT UPTIME</b>\n{uptime}"
 USER_REPLY_TEXT = "❌ Don't send me messages directly, I'm just a File Sharing bot!\nJoin: @DramaOST"
+
+DONATE_MSG = """
+Donate us to keep the service alive 🙂
+
+Many of the Members, already know that the uploading expenses are taken from the donations, we need atleast a minimum amount to keep everything in our hands, the OTT subscription and also the bot expenses 😐
+
+We are not forcing you to pay, but any amount of donation is appreciated 😍
+
+Please donate any amount, so that we can together complete D&O monthly donation target.
+
+Monthly targeted Donation is 27$ only.. kindly donate us to reach the target to continue our service in the coming month.
+
+You can pay through - 
+
+For Indians - Gpay/Phonepay/Paytm - ```pavalad68@okhdfcbank``` or scan the QR 
+
+For outside Indian pay through PayPal - https://www.paypal.me/nadhirah24
+[\u2063](https://graph.org/file/fe5cca1bad1cbf759b6c0.jpg)
+"""
 
 ADMINS.append(OWNER_ID)
 
