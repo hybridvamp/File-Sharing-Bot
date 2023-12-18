@@ -51,8 +51,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
                 id = query.message.from_user.id
             ),
             reply_markup = reply_markup,
-            disable_web_page_preview = True,
-            quote = True
+            disable_web_page_preview = True
         )
     elif data == "donate":
         reply_markup = InlineKeyboardMarkup(
@@ -68,7 +67,6 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         )
         await query.message.edit_text(
             text = DONATE_MSG,
-            reply_markup = reply_markup,
-            quote = True
+            reply_markup = reply_markup
         )
 
