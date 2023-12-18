@@ -67,7 +67,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
             ]
         )
         await query.message.edit_text(
-            text = DONATE_MSG
+            text = DONATE_MSG,
             reply_markup = reply_markup,
             quote = True
         )
