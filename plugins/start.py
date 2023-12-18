@@ -93,7 +93,7 @@ async def start_command(client: Client, message: Message):
                     Button("🔒 Close", callback_data = "close")
                 ],
                 [
-                    InlineKeyboardButton("💰 Donate Us", callback_data = "donate")
+                    Button("💰 Donate Us", callback_data = "donate")
                 ]
             ]
         )
