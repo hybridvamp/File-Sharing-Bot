@@ -68,7 +68,7 @@ BOT_STATS_TEXT = "<b>BOT UPTIME</b>\n{uptime}"
 USER_REPLY_TEXT = "❌ Don't send me messages directly, I'm just a File Sharing bot!\nJoin: @DramaOST"
 
 DONATE_MSG = """
-Donate us to keep the service alive 🙂
+<b>Donate us to keep the service alive 🙂
 
 Many of the Members, already know that the uploading expenses are taken from the donations, we need atleast a minimum amount to keep everything in our hands, the OTT subscription and also the bot expenses 😐
 
@@ -77,13 +77,14 @@ We are not forcing you to pay, but any amount of donation is appreciated 😍
 Please donate any amount, so that we can together complete D&O monthly donation target.
 
 Monthly targeted Donation is 27$ only.. kindly donate us to reach the target to continue our service in the coming month.
-
+</b>
 You can pay through - 
 
-For Indians - Gpay/Phonepay/Paytm - ```pavalad68@okhdfcbank``` or scan the QR 
-
+For Indians - Gpay/Phonepay/Paytm - <code>pavalad68@okhdfcbank</code> or <a href='https://t.me/IUTheFileBot?start=Z2V0LTM1ODY4NTgwMzcxMzE0MA'>scan the QR</a>
+<a href='https://graph.org/file/fe5cca1bad1cbf759b6c0.jpg'>\u2063</a>
 For outside Indian pay through PayPal - https://www.paypal.me/nadhirah24
-[\u2063](https://graph.org/file/fe5cca1bad1cbf759b6c0.jpg)
+
+\u2063
 """
 
 ADMINS.append(OWNER_ID)
