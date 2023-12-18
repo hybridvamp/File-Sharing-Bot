@@ -11,7 +11,7 @@ async def stats(bot: Bot, message: Message):
     uptime = get_readable_time(now - bot.start_timestamp)
     await message.reply(BOT_STATS_TEXT.format(uptime))
 
-@Bot.on_message(filters.command("list") & SUDOERS)
+@Bot.on_message(filters.command("list") & filters.user(ADMINS))
 async def get_users_ids(client, message: Message):
     reply_message = await message.reply_text("`Checking users count...`")
     user_ids = await full_userbase()    
