@@ -49,7 +49,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
                 username = None if not query.message.from_user.username else '@' + query.message.from_user.username,
                 mention = query.message.from_user.mention,
                 id = query.message.from_user.id
-            )
+            ),
             reply_markup = reply_markup,
             disable_web_page_preview = True,
             quote = True
