@@ -120,27 +120,6 @@ REPLY_ERROR = """<code>Use this command as a reply to any telegram message witho
 
 #=====================================================================================##
 
-@Bot.on_message(filters.command('donate') & filters.private)
-async def donate_handler(client: Client, message: Message):
-    reply_markup = Markup(
-        [
-            [
-                Button("💵 UPI", url = "https://t.me/IUTheFileBot/UPI"),
-                Button("💳 PayPal", url = "https://www.paypal.me/nadhirah24")
-            ],
-            [
-                Button("🏠 Home", callback_data = "start"),
-                Button("ℹ️ About Me", callback_data = "about")
-            ],
-            [
-                Button("🔒 Close", callback_data = "close")
-            ]
-        ]
-    )
-    await message.reply_text(
-        text = DONATE_MSG,
-        reply_markup = reply_markup
-    )
     
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
@@ -235,3 +214,26 @@ Unsuccessful: <code>{unsuccessful}</code></b>"""
         msg = await message.reply(REPLY_ERROR)
         await asyncio.sleep(8)
         await msg.delete()
+
+@Bot.on_message(filters.command('donate') & filters.private)
+async def donate_handler(client: Client, message: Message):
+    reply_markup = Markup(
+        [
+            [
+                Button("💵 UPI", url = "https://t.me/IUTheFileBot/UPI"),
+                Button("💳 PayPal", url = "https://www.paypal.me/nadhirah24")
+            ],
+            [
+                Button("🏠 Home", callback_data = "start"),
+                Button("ℹ️ About Me", callback_data = "about")
+            ],
+            [
+                Button("🔒 Close", callback_data = "close")
+            ]
+        ]
+    )
+    await message.reply_text(
+        text = DONATE_MSG,
+        reply_markup = reply_markup
+    )
+
