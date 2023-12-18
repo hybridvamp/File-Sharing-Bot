@@ -23,7 +23,7 @@ async def get_users_ids(client, message: Message):
     file_message = await message.reply_text("Creating userlist file...")
     with open("user_ids.txt", "w") as file:
         for i, user_id in enumerate(user_ids):
-            file.write(user_id + "\n")
+            file.write(f"{user_id}" + "\n")
             if (i + 1) % 1000 == 0:
                 await file_message.edit_text(f"Creating userlist file... {i+1}/{len(user_ids)}")
     
