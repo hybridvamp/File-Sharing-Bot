@@ -57,7 +57,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("💵 UPI", url = "upi://pay?pa=pavalad68@okhdfcbank&pn=Drama%20OST"),
+                    InlineKeyboardButton("💵 UPI", url = "https://t.me/IUTheFileBot/UPI"),
                     InlineKeyboardButton("💳 PayPal", url = "https://www.paypal.me/nadhirah24")
                 ],
                 [
