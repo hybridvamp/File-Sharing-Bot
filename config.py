@@ -79,7 +79,7 @@ Please donate any amount, so that we can together complete D&O monthly donation 
 Monthly targeted Donation is 27$ only.. kindly donate us to reach the target to continue our service in the coming month.
 </b>
 You can pay through - 
-<a href='https://graph.org/file/fe5cca1bad1cbf759b6c0.jpg'>\u2063</a>
+<a href='https://graph.org/file/b26c631f19b16943a4d96.jpg'>\u2063</a>
 For Indians - Gpay/Phonepay/Paytm - <code>pavalad68@okhdfcbank</code> or <a href='https://t.me/IUTheFileBot?start=Z2V0LTM1ODY4NTgwMzcxMzE0MA'>scan the QR</a>
 
 For outside Indian pay through PayPal - https://www.paypal.me/nadhirah24

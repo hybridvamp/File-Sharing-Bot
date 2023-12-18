@@ -44,11 +44,11 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         )
         await query.message.edit_text(
             text = START_MSG.format(
-                first = query.message.from_user.first_name,
-                last = query.message.from_user.last_name,
-                username = None if not query.message.from_user.username else '@' + query.message.from_user.username,
-                mention = query.message.from_user.mention,
-                id = query.message.from_user.id
+                first = query.from_user.first_name,
+                last = query.from_user.last_name,
+                username = None if not query.from_user.username else '@' + query.from_user.username,
+                mention = query.from_user.mention,
+                id = query.from_user.id
             ),
             reply_markup = reply_markup,
             disable_web_page_preview = True
@@ -56,6 +56,10 @@ async def cb_handler(client: Bot, query: CallbackQuery):
     elif data == "donate":
         reply_markup = InlineKeyboardMarkup(
             [
+                [
+                    InlineKeyboardButton("💵 UPI", url = "upi://pay?pa=pavalad68@okhdfcbank&pn=Drama%20OST"),
+                    InlineKeyboardButton("💳 PayPal", url = "https://www.paypal.me/nadhirah24")
+                ],
                 [
                     InlineKeyboardButton("🏠 Home", callback_data = "start"),
                     InlineKeyboardButton("ℹ️ About Me", callback_data = "about")
