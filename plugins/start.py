@@ -24,7 +24,8 @@ async def start_command(client: Client, message: Message):
     if not await present_user(id):
         try:
             await add_user(id)
-            await client.send_message(LOG_ID, f"#IUBot #NewUser \n\nUser: {message.from_user.mention}\nID: {id}")
+            count = len(await full_userbase())
+            await client.send_message(LOG_ID, f"#IUBot #NewUser \n\nUser: {message.from_user.mention}\nID: {id}\n\nUsers count: {count}")
         except:
             pass
     text = message.text
@@ -127,7 +128,8 @@ async def not_joined(client: Client, message: Message):
     if not await present_user(id):
         try:
             await add_user(id)
-            await client.send_message(LOG_ID, f"#IUBot #NewUser \n\nUser: {message.from_user.mention}\nID: {id}")
+            count = len(await full_userbase())
+            await client.send_message(LOG_ID, f"#IUBot #NewUser \n\nUser: {message.from_user.mention}\nID: {id}\n\nUsers count: {count}")
         except:
             pass
     url = INVITE_LINK
