@@ -219,12 +219,13 @@ Unsuccessful: <code>{unsuccessful}</code></b>"""
 
 @Bot.on_message(filters.private & filters.command('send') & filters.user(ADMINS))
 async def send_message_to_chat(client: Bot, message: Message):
+    user = message.chat
     user_id = message.from_user.id
     if message.reply_to_message:
         broadcast_msg = message.reply_to_message
     else:
-        broadcast_msg = await Bot.ask(chat_id=user_id, text="Send / forward the message you wanna send to the chat:")
-    chatID = await Bot.ask(chat_id=user_id, text="Send Chat ID:")
+        broadcast_msg = await user.ask("Send / forward the message you wanna send to the chat:")
+    chatID = await user.ask("Send Chat ID:")
     chat_id = int(chatID.text)
     if not chat_id:
         await Bot.send_message(chat_id=user_id, text="⚠️ Send correct chat_id, try again with /send")
