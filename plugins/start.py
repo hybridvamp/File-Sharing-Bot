@@ -229,9 +229,11 @@ async def send_message_to_chat(client: Bot, message: Message):
     chat_id = int(chatID.text)
     if not chat_id:
         await Bot.send_message(chat_id=user_id, text="⚠️ Send correct chat_id, try again with /send")
-    chat = await Bot.get_chat(chat_id)
+        return
+    chat = await Bot.get_chat(chat_id=chat_id)
     if not chat:
         await Bot.send_message(chat_id=user_id, text="⚠️ Make sure i am admin in the chat, try again with /send")
+        return
     try:
         post = await broadcast_msg.copy(chat_id)
         await Bot.send_message(chat_id=user_id, text=f"✅ Posted to the chat: {chat.title}\nLink: {post.link}", disable_web_page_preview=True)
