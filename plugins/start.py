@@ -228,17 +228,17 @@ async def send_message_to_chat(client: Bot, message: Message):
     chatID = await user.ask("Send Chat ID:")
     chat_id = int(chatID.text)
     if not chat_id:
-        await Bot.send_message(chat_id=user_id, text="⚠️ Send correct chat_id, try again with /send")
+        await client.send_message(chat_id=user_id, text="⚠️ Send correct chat_id, try again with /send")
         return
-    # chat = await Client.get_chat(chat_id=chat_id)
-    # if not chat:
-    #     await Bot.send_message(chat_id=user_id, text="⚠️ Make sure i am admin in the chat, try again with /send")
-    #     return
+    chat = await client.get_chat(chat_id=chat_id)
+    if not chat:
+        await client.send_message(chat_id=user_id, text="⚠️ Make sure i am admin in the chat, try again with /send")
+        return
     try:
         post = await broadcast_msg.copy(chat_id)
-        await Bot.send_message(chat_id=user_id, text=f"✅ Posted to the chat: {chat_id}\nLink: {post.link}", disable_web_page_preview=True)
+        await client.send_message(chat_id=user_id, text=f"✅ Posted to the chat: {chat_id}\nLink: {post.link}", disable_web_page_preview=True)
     except Exception as e:
-        await Bot.send_message(chat_id=user_id, text=f"⚠️ Error while sending the post\n\n```Error:\n{e}```")
+        await client.send_message(chat_id=user_id, text=f"⚠️ Error while sending the post\n\n```Error:\n{e}```")
 
 @Bot.on_message(filters.command('donate') & filters.private)
 async def donate_handler(client: Client, message: Message):
