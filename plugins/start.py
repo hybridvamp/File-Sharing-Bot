@@ -230,7 +230,7 @@ async def send_message_to_chat(client: Bot, message: Message):
     if not chat_id:
         await Bot.send_message(chat_id=user_id, text="⚠️ Send correct chat_id, try again with /send")
         return
-    chat = await Bot.get_chat(chat_id=chat_id)
+    chat = await Client.get_chat(chat_id=chat_id)
     if not chat:
         await Bot.send_message(chat_id=user_id, text="⚠️ Make sure i am admin in the chat, try again with /send")
         return
