@@ -1,3 +1,4 @@
+import os
 from bot import Bot
 from pyrogram.types import Message
 from pyrogram import filters

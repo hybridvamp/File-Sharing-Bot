@@ -217,6 +217,26 @@ Unsuccessful: <code>{unsuccessful}</code></b>"""
         await asyncio.sleep(8)
         await msg.delete()
 
+@Bot.on_message(filters.private & filters.command('send') & filters.user(ADMINS))
+async def send_message_to_chat(client: Bot, message: Message):
+    user_id = message.from_user.id
+    if message.reply_to_message:
+        broadcast_msg = message.reply_to_message
+    else:
+        broadcast_msg = await Bot.ask(chat_id=user_id, text="Send / forward the message you wanna send to the chat:")
+    chatID = await Bot.ask(chat_id=user_id, text="Send Chat ID:")
+    chat_id = int(chatID.text)
+    if not chat_id:
+        await Bot.send_message(chat_id=user_id, text="⚠️ Send correct chat_id, try again with /send")
+    chat = Bot.get_chat(chat_id)
+    if not chat:
+        await Bot.send_message(chat_id=user_id, text="⚠️ Make sure i am admin in the chat, try again with /send")
+    try:
+        post = await broadcast_msg.copy(chat_id)
+        await await Bot.send_message(chat_id=user_id, text=f"✅ Posted to the chat: {chat.title}\nLink: {post.link}", disable_web_page_preview=True)
+    except Exception as e:
+        await Bot.send_message(chat_id=user_id, text=f"⚠️ Error while sending the post\n\n```Error:\n{e}```")
+
 @Bot.on_message(filters.command('donate') & filters.private)
 async def donate_handler(client: Client, message: Message):
     reply_markup = Markup(
