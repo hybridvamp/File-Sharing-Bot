@@ -11,7 +11,7 @@ from helper_func import encode
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(CMD_LIST))
 async def channel_post(client: Client, message: Message):
-    reply_text = await message.reply_text("Please Wait...!", quote = True)
+    reply_text = await message.reply_text("⏳", quote = True)
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
         await post_message.reply_text(f"From {message.from_user.mention} (`{message.from_user.id}`)")
