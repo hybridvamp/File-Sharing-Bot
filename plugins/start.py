@@ -63,7 +63,7 @@ async def start_command(client: Client, message: Message):
         except:
             await message.reply_text("Something went wrong..!")
             return
-        await temp_msg.delete()
+        await temp_msg.edit("**Here are your files:**")
 
         for msg in messages:
             
@@ -71,7 +71,14 @@ async def start_command(client: Client, message: Message):
 
             if bool(CUSTOM_CAPTION) & bool(msg.document):
                 caption = CUSTOM_CAPTION.format(previouscaption = caption, filename = msg.document.file_name)
-
+            reply_markup = Markup(
+                [
+                    [
+                        Button("ℹ️ Disclaimer", callback_data = "disclaimer"),
+                        Button("🔗 Share", url = f"https://t.me/share/url?url=https://t.me/{client.username}?start={message.command[1]}")
+                    ]
+                ]
+            )
             if DISABLE_CHANNEL_BUTTON:
                 reply_markup = msg.reply_markup
             else:

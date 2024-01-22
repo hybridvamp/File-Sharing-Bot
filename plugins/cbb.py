@@ -10,7 +10,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
     data = query.data
     if data == "about":
         await query.message.edit_text(
-            text = f"<b>○ Version : 0.2.1 (stable)\n○ Dev : <a href='https://t.me/hybridupdates'>HybridUpdates</a>\n○ Language : <code>Python3</code>\n○ Library : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio {__version__}</a>\n○ Channel : @Asian_Drama_Updates\n○ Support Group : @dramaost</b>",
+            text = f"<b>○ Version : 0.3.0 (stable)\n○ Dev : <a href='https://t.me/hybridupdates'>HybridUpdates</a>\n○ Language : <code>Python3</code>\n○ Library : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio {__version__}</a>\n○ Channel : @Asian_Drama_Updates\n○ Support Group : @dramaost</b>",
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
                 [
@@ -73,4 +73,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
             text = DONATE_MSG,
             reply_markup = reply_markup
         )
+    elif data == "disclaimer":
+        TEXT = "Disclaimer: 📂 This bot shares publicly available files. We do not claim ownership of any content shared, and users are responsible for ensuring they have the right to distribute and download these files. If you believe your copyright is being infringed, please contact us 📩, and we will promptly address the issue."
+        await query.answer(TEXT, show_alert=True)
 
