@@ -74,6 +74,6 @@ async def cb_handler(client: Bot, query: CallbackQuery):
             reply_markup = reply_markup
         )
     elif data == "disclaimer":
-        TEXT = "📂 This bot shares publicly available files \nWe do not claim ownership of any content share \nIf you believe your copyright is being infringed, please contact us 📩"
+        TEXT = "📂 This bot shares publicly available files \n⚠️ We do not claim ownership of any content share \n\nIf you believe your copyright is being infringed, please contact us 📩"
         await query.answer(TEXT, show_alert=True)
 
