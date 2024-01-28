@@ -55,7 +55,7 @@ REACT_ID = -1001948557982
 
 @Bot.on_message(filters.chat(REACT_ID))
 async def react_msg_appx(_, message):
-    chat = await Bot.get_chat(REACT_ID)
+    chat = await Bot.get_chat(chat_id=REACT_ID)
     react = chat.available_reactions
     reactions = react.reactions
     msglink = message.link
