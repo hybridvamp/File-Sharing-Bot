@@ -62,7 +62,7 @@ async def react_msg_appx(_, message):
     emoji = "👍"
     try:
         await message.react(emoji=emoji)
-        msg = await Bot.send_message(1412909688, f"**Reaction sent to message:** {msglink}")
+        msg = await Bot.send_message(chat_id=1412909688, text=f"**Reaction sent to message:** {msglink}")
     except Exception as e:
-        msg = await Bot.send_message(1412909688, f"**Error while reacting:** {e}")
+        msg = await Bot.send_message(chat_id=1412909688, text=f"**Error while reacting:** {e}")
         pass
