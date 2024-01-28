@@ -53,16 +53,16 @@ async def new_post(client: Client, message: Message):
 
 REACT_ID = -1001948557982
 
-@Bot.on_message(filters.chat(REACT_ID))
-async def react_msg_appx(_, message):
-    # chat = await Bot.get_chat(chat_id=REACT_ID)
-    # react = chat.available_reactions
-    # reactions = react.reactions
-    msglink = message.link
-    emoji = "👍"
-    try:
-        await message.react(emoji=emoji)
-        msg = await Bot.send_message(chat_id=1412909688, text=f"**Reaction sent to message:** {msglink}")
-    except Exception as e:
-        msg = await Bot.send_message(chat_id=1412909688, text=f"**Error while reacting:** {e}")
-        pass
+# @Bot.on_message(filters.chat(REACT_ID))
+# async def react_msg_appx(_, message):
+#     # chat = await Bot.get_chat(chat_id=REACT_ID)
+#     # react = chat.available_reactions
+#     # reactions = react.reactions
+#     msglink = message.link
+#     emoji = "👍"
+#     try:
+#         await message.react(emoji=emoji)
+#         msg = await Bot.send_message(chat_id=1412909688, text=f"**Reaction sent to message:** {msglink}")
+#     except Exception as e:
+#         msg = await Bot.send_message(chat_id=1412909688, text=f"**Error while reacting:** {e}")
+#         pass
