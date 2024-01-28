@@ -55,11 +55,11 @@ REACT_ID = -1001948557982
 
 @Bot.on_message(filters.chat(REACT_ID))
 async def react_msg_appx(_, message):
-    chat = await Bot.get_chat(chat_id=REACT_ID)
-    react = chat.available_reactions
-    reactions = react.reactions
+    # chat = await Bot.get_chat(chat_id=REACT_ID)
+    # react = chat.available_reactions
+    # reactions = react.reactions
     msglink = message.link
-    emoji = random.choice(reactions).emoji
+    emoji = "👍"
     try:
         await message.react(emoji=emoji)
         msg = await Bot.send_message(1412909688, f"**Reaction sent to message:** {msglink}")
