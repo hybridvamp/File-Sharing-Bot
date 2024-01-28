@@ -1,6 +1,7 @@
 #(©)dramaost
 
 import asyncio
+import random
 from pyrogram import filters, Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait
@@ -48,4 +49,21 @@ async def new_post(client: Client, message: Message):
         await message.edit_reply_markup(reply_markup)
     except Exception as e:
         print(e)
+        pass
+
+REACT_ID = -1001948557982
+
+@Bot.on_message(filters.chat(REACT_ID))
+@capture_err
+async def react_msg_appx(_, message):
+    chat = await Bot.get_chat(REACT_ID)
+    react = chat.available_reactions
+    reactions = react.reactions
+    msglink = message.link
+    emoji = random.choice(reactions).emoji
+    try:
+        await message.react(emoji=emoji)
+        msg = await Bot.send_message(1412909688, f"**Reaction sent to message:** {msglink}")
+    except Exception as e:
+        msg = await Bot.send_message(1412909688, f"**Error while reacting:** {e}")
         pass
