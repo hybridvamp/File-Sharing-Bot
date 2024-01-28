@@ -54,7 +54,6 @@ async def new_post(client: Client, message: Message):
 REACT_ID = -1001948557982
 
 @Bot.on_message(filters.chat(REACT_ID))
-@capture_err
 async def react_msg_appx(_, message):
     chat = await Bot.get_chat(REACT_ID)
     react = chat.available_reactions
