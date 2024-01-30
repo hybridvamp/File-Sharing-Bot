@@ -25,7 +25,7 @@ try:
 except ValueError:
     print(f"Invalid value for FORCE_SUB_CHANNELS: {FORCE_SUB_CHANNELS}")
 
-TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "10"))
+TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "50"))
 
 START_MSG = os.environ.get("START_MESSAGE", "Hello {first}!\n\nI am a File Sharing Bot Made specially for @Dramaost for file sharing purposes")
 try:

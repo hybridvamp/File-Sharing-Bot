@@ -35,7 +35,7 @@ class Bot(Client):
         self.LOGGER = LOGGER(__name__)
     
     async def panic(self): # for use in plugins
-        self.LOGGER.info("\nBot Stopped. Join https://t.me/dramaost for support")
+        self.LOGGER.info("\nBot Stopped. Join https://t.me/hybrid_chat for support")
         sys.exit()
     
     async def parse_invite_link(self, channel):
