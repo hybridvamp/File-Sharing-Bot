@@ -73,7 +73,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
             text = DONATE_MSG,
             reply_markup = reply_markup
         )
-    # elif data == "disclaimer":
-    #     TEXT = "📂 This bot shares publicly available files \n⚠️ We do not claim ownership of any content share \n\nIf you believe your copyright is being infringed, please contact us 📩"
-    #     await query.answer(TEXT, show_alert=True)
+    elif data == "disclaimer":
+        TEXT = "📂 This bot shares publicly available files \n⚠️ We do not claim ownership of any content share \n\nIf you believe your copyright is being infringed, please contact us 📩"
+        await query.answer(TEXT, show_alert=True)
 

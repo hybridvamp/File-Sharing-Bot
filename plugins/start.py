@@ -74,7 +74,7 @@ async def start_command(client: Client, message: Message):
             MARKUP = Markup(
                 [
                     [
-                        # Button("⚠️ Disclaimer", callback_data = "disclaimer"),
+                        Button("⚠️ Disclaimer", callback_data = "disclaimer"),
                         Button("🔗 Share", url = f"https://t.me/share/url?url=https://t.me/{client.username}?start={message.command[1]}")
                     ]
                 ]
