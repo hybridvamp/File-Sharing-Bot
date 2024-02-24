@@ -1,4 +1,4 @@
-# File-sharing-Bot
+# File-sharing-Bot 🚨 THIS FORK IS DEPRECATED 🚨
 
 <p align="center">
   <a href="https://www.python.org">
