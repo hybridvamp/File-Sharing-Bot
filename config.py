@@ -10,12 +10,12 @@ load_dotenv()
 TG_BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 APP_ID = int(os.environ.get("APP_ID", ""))
 API_HASH = os.environ.get("API_HASH", "")
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", ""))
-LOG_ID = int(os.environ.get("LOG_ID", ""))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "")) #db channel id
+LOG_ID = int(os.environ.get("LOG_ID", "")) #newuser log channel id
 OWNER_ID = int(os.environ.get("OWNER_ID", ""))
 PORT = os.environ.get("PORT", "8080")
 DB_URI = os.environ.get("DATABASE_URL", "")
-DB_NAME = os.environ.get("DATABASE_NAME", "iufilebot")
+DB_NAME = os.environ.get("DATABASE_NAME", "hybridfiles")
 FORCE_SUB_CHANNELS = os.environ.get("FORCE_SUB_CHANNELS", False)
 INVITE_LINK = os.environ.get("INVITE_LINK", "")
 CMD_LIST = ['start','users','broadcast','batch','genlink','stats','donate','list','send']
@@ -49,25 +49,25 @@ DISABLE_CHANNEL_BUTTON = os.environ.get("DISABLE_CHANNEL_BUTTON", None) == 'True
 BOT_STATS_TEXT = "<b>BOT UPTIME</b>\n{uptime}"
 USER_REPLY_TEXT = "❌ Don't send me messages directly, I'm just a File Sharing bot!\nJoin: @drama4uk"
 
-DONATE_MSG = """
-<b>Donate us to keep the service alive 🙂
+# DONATE_MSG = """
+# <b>Donate us to keep the service alive 🙂
 
-Many of the Members, already know that the uploading expenses are taken from the donations, we need atleast a minimum amount to keep everything in our hands, the OTT subscription and also the bot expenses 😐
+# Many of the Members, already know that the uploading expenses are taken from the donations, we need atleast a minimum amount to keep everything in our hands, the OTT subscription and also the bot expenses 😐
 
-We are not forcing you to pay, but any amount of donation is appreciated 😍
+# We are not forcing you to pay, but any amount of donation is appreciated 😍
 
-Please donate any amount, so that we can together complete D&O monthly donation target.
+# Please donate any amount, so that we can together complete D&O monthly donation target.
 
-Monthly targeted Donation is 27$ only.. kindly donate us to reach the target to continue our service in the coming month.
-</b>
-You can pay through - 
-<a href='https://graph.org/file/b26c631f19b16943a4d96.jpg'>\u2063</a>
-For Indians - Gpay/Phonepay/Paytm - <code>pavalad68@okhdfcbank</code> or <a href='https://t.me/IUTheFileBot?start=Z2V0LTM1ODY4NTgwMzcxMzE0MA'>scan the QR</a>
+# Monthly targeted Donation is 27$ only.. kindly donate us to reach the target to continue our service in the coming month.
+# </b>
+# You can pay through - 
+# <a href='https://graph.org/file/b26c631f19b16943a4d96.jpg'>\u2063</a>
+# For Indians - Gpay/Phonepay/Paytm - <code>pavalad68@okhdfcbank</code> or <a href='https://t.me/IUTheFileBot?start=Z2V0LTM1ODY4NTgwMzcxMzE0MA'>scan the QR</a>
 
-For outside Indian pay through PayPal - https://www.paypal.me/nadhirah24
+# For outside Indian pay through PayPal - https://www.paypal.me/nadhirah24
 
-\u2063
-"""
+# \u2063
+# """
 
 ADMINS.append(OWNER_ID)
 

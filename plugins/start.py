@@ -7,7 +7,7 @@ import asyncio
 
 from bot import Bot
 from config import (ADMINS, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, FORCE_MSG,
-                    PROTECT_CONTENT, START_MSG, INVITE_LINK, LOG_ID, DONATE_MSG)
+                    PROTECT_CONTENT, START_MSG, INVITE_LINK, LOG_ID)
 from database.database import add_user, del_user, full_userbase, present_user
 from helper_func import decode, encode, get_messages, subscribed
 from pyrogram import Client, __version__, filters
@@ -99,10 +99,10 @@ async def start_command(client: Client, message: Message):
                 [
                     Button("ℹ️ About Me", callback_data = "about"),
                     Button("🔒 Close", callback_data = "close")
-                ],
-                [
-                    Button("💰 Donate Us", callback_data = "donate")
-                ]
+                ]#,
+                # [
+                #     Button("💰 Donate Us", callback_data = "donate")
+                # ]
             ]
         )
         await message.reply_text(
@@ -247,25 +247,25 @@ async def send_message_to_chat(client: Bot, message: Message):
     except Exception as e:
         await client.send_message(chat_id=user_id, text=f"⚠️ Error while sending the post\n\n```Error:\n{e}```")
 
-@Bot.on_message(filters.command('donate') & filters.private)
-async def donate_handler(client: Client, message: Message):
-    reply_markup = Markup(
-        [
-            [
-                Button("💵 UPI", url = "https://t.me/IUTheFileBot/UPI"),
-                Button("💳 PayPal", url = "https://www.paypal.me/nadhirah24")
-            ],
-            [
-                Button("🏠 Home", callback_data = "start"),
-                Button("ℹ️ About Me", callback_data = "about")
-            ],
-            [
-                Button("🔒 Close", callback_data = "close")
-            ]
-        ]
-    )
-    await message.reply_text(
-        text = DONATE_MSG,
-        reply_markup = reply_markup
-    )
+# @Bot.on_message(filters.command('donate') & filters.private)
+# async def donate_handler(client: Client, message: Message):
+#     reply_markup = Markup(
+#         [
+#             [
+#                 Button("💵 UPI", url = "https://t.me/IUTheFileBot/UPI"),
+#                 Button("💳 PayPal", url = "https://www.paypal.me/nadhirah24")
+#             ],
+#             [
+#                 Button("🏠 Home", callback_data = "start"),
+#                 Button("ℹ️ About Me", callback_data = "about")
+#             ],
+#             [
+#                 Button("🔒 Close", callback_data = "close")
+#             ]
+#         ]
+#     )
+#     await message.reply_text(
+#         text = DONATE_MSG,
+#         reply_markup = reply_markup
+#     )
 

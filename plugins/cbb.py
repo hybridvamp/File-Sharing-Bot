@@ -2,7 +2,7 @@
 
 from pyrogram import __version__
 from bot import Bot
-from config import OWNER_ID, START_MSG, DONATE_MSG
+from config import OWNER_ID, START_MSG, #DONATE_MSG
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
 @Bot.on_callback_query()
@@ -17,10 +17,10 @@ async def cb_handler(client: Bot, query: CallbackQuery):
                     [
                         InlineKeyboardButton("🔙 Back", callback_data = "start"),
                         InlineKeyboardButton("🔒 Close", callback_data = "close")
-                    ],
-                    [
-                        InlineKeyboardButton("💰 Donate Us", callback_data = "donate")
-                    ]
+                    ]#,
+                    # [
+                    #     InlineKeyboardButton("💰 Donate Us", callback_data = "donate")
+                    # ]
                 ]
             )
         )
@@ -36,10 +36,10 @@ async def cb_handler(client: Bot, query: CallbackQuery):
                 [
                     InlineKeyboardButton("ℹ️ About Me", callback_data = "about"),
                     InlineKeyboardButton("🔒 Close", callback_data = "close")
-                ],
-                [
-                    InlineKeyboardButton("💰 Donate Us", callback_data = "donate")
-                ]
+                ]#,
+                # [
+                #     InlineKeyboardButton("💰 Donate Us", callback_data = "donate")
+                # ]
             ]
         )
         await query.message.edit_text(
@@ -53,26 +53,26 @@ async def cb_handler(client: Bot, query: CallbackQuery):
             reply_markup = reply_markup,
             disable_web_page_preview = True
         )
-    elif data == "donate":
-        reply_markup = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("💵 UPI", url = "https://t.me/IUTheFileBot/UPI"),
-                    InlineKeyboardButton("💳 PayPal", url = "https://www.paypal.me/nadhirah24")
-                ],
-                [
-                    InlineKeyboardButton("🏠 Home", callback_data = "start"),
-                    InlineKeyboardButton("ℹ️ About Me", callback_data = "about")
-                ],
-                [
-                    InlineKeyboardButton("🔒 Close", callback_data = "close")
-                ]
-            ]
-        )
-        await query.message.edit_text(
-            text = DONATE_MSG,
-            reply_markup = reply_markup
-        )
+    # elif data == "donate":
+    #     reply_markup = InlineKeyboardMarkup(
+    #         [
+    #             [
+    #                 InlineKeyboardButton("💵 UPI", url = "https://t.me/IUTheFileBot/UPI"),
+    #                 InlineKeyboardButton("💳 PayPal", url = "https://www.paypal.me/nadhirah24")
+    #             ],
+    #             [
+    #                 InlineKeyboardButton("🏠 Home", callback_data = "start"),
+    #                 InlineKeyboardButton("ℹ️ About Me", callback_data = "about")
+    #             ],
+    #             [
+    #                 InlineKeyboardButton("🔒 Close", callback_data = "close")
+    #             ]
+    #         ]
+    #     )
+    #     await query.message.edit_text(
+    #         text = DONATE_MSG,
+    #         reply_markup = reply_markup
+    #     )
     elif data == "disclaimer":
         TEXT = "📂 This bot shares publicly available files \n⚠️ We do not claim ownership of any content share \n\nIf you believe your copyright is being infringed, please contact us 📩"
         await query.answer(TEXT, show_alert=True)
