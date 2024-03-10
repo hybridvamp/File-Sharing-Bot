@@ -1,4 +1,4 @@
-#(©)dramaost
+#(©)drama4uk
 
 
 
@@ -63,7 +63,7 @@ async def start_command(client: Client, message: Message):
         except:
             await message.reply_text("Something went wrong..!")
             return
-        await temp_msg.edit("Join @DramaOST")
+        await temp_msg.edit("Join @drama4uk")
 
         for msg in messages:
             

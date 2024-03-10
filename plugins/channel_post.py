@@ -1,4 +1,4 @@
-#(©)dramaost
+#(©)drama4uk
 
 import asyncio
 import random

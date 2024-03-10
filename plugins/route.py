@@ -1,4 +1,4 @@
-#(©)dramaost
+#(©)drama4uk
 #rymme
 
 
@@ -11,4 +11,4 @@ routes = web.RouteTableDef()
 
 @routes.get("/", allow_head=True)
 async def root_route_handler(request):
-    return web.json_response("dramaost")
+    return web.json_response("drama4uk")

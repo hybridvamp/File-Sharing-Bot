@@ -27,7 +27,7 @@ except ValueError:
 
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "50"))
 
-START_MSG = os.environ.get("START_MESSAGE", "Hello {first}!\n\nI am a File Sharing Bot Made specially for @Dramaost for file sharing purposes")
+START_MSG = os.environ.get("START_MESSAGE", "Hello {first}!\n\nI am a File Sharing Bot Made specially for @drama4uk for file sharing purposes")
 try:
     ADMINS=[]
     for x in (os.environ.get("ADMINS", "").split()):
@@ -47,7 +47,7 @@ PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "False") == "True" e
 DISABLE_CHANNEL_BUTTON = os.environ.get("DISABLE_CHANNEL_BUTTON", None) == 'True'
 
 BOT_STATS_TEXT = "<b>BOT UPTIME</b>\n{uptime}"
-USER_REPLY_TEXT = "❌ Don't send me messages directly, I'm just a File Sharing bot!\nJoin: @DramaOST"
+USER_REPLY_TEXT = "❌ Don't send me messages directly, I'm just a File Sharing bot!\nJoin: @drama4uk"
 
 DONATE_MSG = """
 <b>Donate us to keep the service alive 🙂
