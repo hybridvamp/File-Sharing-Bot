@@ -42,7 +42,7 @@ async def start_command(client: Client, message: Message):
             MARKUP = Markup(
                 [
                     [
-                        Button("📁 Get files", url = f"https://t.me/{temp.FILE_UN}?start={message.command[1]}")
+                        Button("📁 Get files", url = f"https://t.me/{temp.FILE_UN}?start={message.command[1]}", reply_markup=MARKUP)
                     ]
                 ]
             )
