@@ -104,14 +104,18 @@ class Nbot(Client):
         file_bot_me = await self.get_me()
         temp.FILE_UN = file_bot_me.username
         self.LOGGER.info(f"@{temp.FILE_UN} Bot Running..!\n\nCreated by (c) Hybrid")
+    
+    async def stop(self, *args):
+        await super().stop()
+        self.LOGGER.info("Bot stopped.")
 
 async def main():
     bot = Bot()
     nbot = Nbot()
     
     await asyncio.gather(
-        bot.run(),
-        nbot.run()
+        bot.start(),
+        nbot.start()
     )
 
 if __name__ == "__main__":
