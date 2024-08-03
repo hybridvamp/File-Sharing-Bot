@@ -9,6 +9,7 @@ load_dotenv()
 
 TG_BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 # FILE_BOT_TOKEN = os.environ.get("FILE_BOT_TOKEN", "")
+FILE_BOT_UN = os.environ.get("FILE_BOT_UN", "")
 APP_ID = int(os.environ.get("APP_ID", ""))
 API_HASH = os.environ.get("API_HASH", "")
 CHANNEL_ID = int(os.environ.get("CHANNEL_ID", ""))

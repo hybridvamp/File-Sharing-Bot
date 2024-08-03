@@ -10,7 +10,7 @@ import sys
 from datetime import datetime
 
 from temp import temp
-from config import API_HASH, APP_ID, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNELS, CHANNEL_ID, PORT
+from config import API_HASH, APP_ID, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNELS, CHANNEL_ID, PORT, FILE_BOT_UN
 
 BANNER = f"""\n\n
 ██╗░░██╗██╗░░░██╗██████╗░██████╗░██╗██████╗░
@@ -78,6 +78,7 @@ class Bot(Client):
         self.set_parse_mode(ParseMode.HTML)
         self.username = usr_bot_me.username
         self.LOGGER.info(f"@{self.username} Bot Running..!")
+        temp.FILE_UN = FILE_BOT_UN
         #web-response
         app = web.AppRunner(await web_server())
         await app.setup()

@@ -109,7 +109,7 @@ async def start_command(client: Client, message: Message):
         return
     else:
         if not client.username == "IUTheFileBot":
-            await message.reply_text("**Use @IUTheFileBot !**")
+            await message.reply_text("<b>Use @IUTheFileBot !</b>")
             return
         reply_markup = Markup(
             [
