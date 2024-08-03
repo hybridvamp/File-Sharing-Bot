@@ -89,10 +89,6 @@ class Bot(Client):
         await super().stop()
         self.LOGGER.info("Bot stopped.")
 
-<<<<<<< HEAD
-
-
-=======
 # class Nbot(Client):
 #     def __init__(self):
 #         super().__init__(
@@ -112,7 +108,6 @@ class Bot(Client):
 #         temp.FILE_UN = file_bot_me.username
 #         self.LOGGER.info(f"@{temp.FILE_UN} Bot Running..!\n\nCreated by (c) Hybrid")
 
->>>>>>> 0acb273eee64c7b202b6451d9813b4d1efbdfc0f
 if __name__ == "__main__":
     Bot().run()
     # Nbot().run()
