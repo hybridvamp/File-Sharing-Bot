@@ -111,7 +111,7 @@ class Nbot(Client):
 async def main():
     bot = Bot()
     nbot = Nbot()
-    await asyncio.gather(bot.start(), nbot.start())
+    await asyncio.gather(bot.run(), nbot.run())
 
 if __name__ == "__main__":
     asyncio.run(main())
