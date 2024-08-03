@@ -20,7 +20,11 @@ from pyrogram.types import Message
 # @Nbot.on_message(filters.command('start') & filters.private)
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
-    if not await present_user(id):
+    if client.username == "IUTheFileBot":
+        check = await present_user(id)
+    else:
+        check = await present_user_file(id)
+    if not check:
         try:
             if client.username == "IUTheFileBot":
                 await add_user(id)
@@ -42,7 +46,7 @@ async def start_command(client: Client, message: Message):
                     ]
                 ]
             )
-            await message.reply_text(f"Click the button below and start the bot for files 👇🏻", reply_markup=MARKUP)
+            await message.reply_text(f"Click the button below and start the bot for files 👇🏻")
             return
         try:
             string = text.split(" ", 1)[1]
