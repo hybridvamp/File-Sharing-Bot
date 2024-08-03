@@ -42,11 +42,11 @@ async def start_command(client: Client, message: Message):
             MARKUP = Markup(
                 [
                     [
-                        Button("📁 Get files", url = f"https://t.me/{temp.FILE_UN}?start={message.command[1]}", reply_markup=MARKUP)
+                        Button("📁 Get files", url = f"https://t.me/{temp.FILE_UN}?start={message.command[1]}")
                     ]
                 ]
             )
-            await message.reply_text(f"Click the button below and start the bot for files 👇🏻")
+            await message.reply_text(f"Click the button below and start the bot for files 👇🏻", reply_markup=MARKUP)
             return
         try:
             string = text.split(" ", 1)[1]
