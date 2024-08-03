@@ -7,8 +7,8 @@ from pyromod import listen
 from pyrogram import Client
 from pyrogram.enums import ParseMode
 import sys
-import asyncio
 from datetime import datetime
+import threading
 
 from temp import temp
 from config import API_HASH, APP_ID, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNELS, CHANNEL_ID, PORT, FILE_BOT_TOKEN
@@ -108,10 +108,18 @@ class Nbot(Client):
         temp.FILE_UN = file_bot_me.username
         self.LOGGER.info(f"@{temp.FILE_UN} Bot Running..!\n\nCreated by (c) Hybrid")
 
-async def main():
+def start_bot():
     bot = Bot()
+    bot.run()
+
+def start_nbot():
     nbot = Nbot()
-    await asyncio.gather(bot.run(), nbot.run())
+    nbot.run()
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    bot_thread = threading.Thread(target=start_bot)
+    nbot_thread = threading.Thread(target=start_nbot)
+    bot_thread.start()
+    nbot_thread.start()
+    bot_thread.join()
+    nbot_thread.join()
