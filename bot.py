@@ -1,8 +1,6 @@
-#(©)dramaost
-
+import asyncio
 from aiohttp import web
 from plugins import web_server
-
 from pyromod import listen
 from pyrogram import Client
 from pyrogram.enums import ParseMode
@@ -21,25 +19,6 @@ BANNER = f"""\n\n
 ╚═╝░░╚═╝░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚═╝╚═════╝░
 """
 
-class Nbot(Client):
-    def __init__(self):
-        super().__init__(
-            name="Nbot",
-            api_hash=API_HASH,
-            api_id=APP_ID,
-            plugins={
-                "root": "plugins"
-            },
-            workers=TG_BOT_WORKERS,
-            bot_token=FILE_BOT_TOKEN
-        )
-        self.LOGGER = LOGGER(__name__)
-    async def start(self):
-        await super().start()
-        file_bot_me = await self.get_me()
-        temp.FILE_UN = file_bot_me.username
-        self.LOGGER.info(f"@{temp.FILE_UN} Bot Running..!\n\nCreated by (c) Hybrid")
-
 class Bot(Client):
     def __init__(self):
         super().__init__(
@@ -54,7 +33,7 @@ class Bot(Client):
         )
         self.LOGGER = LOGGER(__name__)
     
-    async def panic(self): # for use in plugins
+    async def panic(self):
         self.LOGGER.info("\nBot Stopped. Join https://t.me/hybrid_chat for support")
         sys.exit()
     
@@ -82,12 +61,11 @@ class Bot(Client):
 
         if self.force_sub["active"]:
             self.force_sub["ids"] = [FORCE_SUB_CHANNELS]
-            # self.force_sub["links"] = [self.parse_invite_link(FORCE_SUB_CHANNELS)] 
  
         try:
             db_channel = await self.get_chat(CHANNEL_ID)
             self.db_channel = db_channel
-            test = await self.send_message(chat_id = db_channel.id, text = "Test Message")
+            test = await self.send_message(chat_id=db_channel.id, text="Test Message")
             await test.delete()
         except Exception as e:
             self.LOGGER.warning(e)
@@ -97,7 +75,7 @@ class Bot(Client):
         self.set_parse_mode(ParseMode.HTML)
         self.username = usr_bot_me.username
         self.LOGGER.info(f"@{self.username} Bot Running..!")
-        #web-response
+        
         app = web.AppRunner(await web_server())
         await app.setup()
         bind_address = "0.0.0.0"
@@ -107,7 +85,34 @@ class Bot(Client):
         await super().stop()
         self.LOGGER.info("Bot stopped.")
 
-if __name__ == "__main__":
-    Nbot().start()
-    Bot().run()
+class Nbot(Client):
+    def __init__(self):
+        super().__init__(
+            name="Nbot",
+            api_hash=API_HASH,
+            api_id=APP_ID,
+            plugins={
+                "root": "plugins"
+            },
+            workers=TG_BOT_WORKERS,
+            bot_token=FILE_BOT_TOKEN
+        )
+        self.LOGGER = LOGGER(__name__)
+        
+    async def start(self):
+        await super().start()
+        file_bot_me = await self.get_me()
+        temp.FILE_UN = file_bot_me.username
+        self.LOGGER.info(f"@{temp.FILE_UN} Bot Running..!\n\nCreated by (c) Hybrid")
+
+async def main():
+    bot = Bot()
+    nbot = Nbot()
     
+    await asyncio.gather(
+        bot.start(),
+        nbot.start()
+    )
+
+if __name__ == "__main__":
+    asyncio.run(main())
