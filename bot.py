@@ -114,8 +114,8 @@ async def main():
     nbot = Nbot()
     
     await asyncio.gather(
-        bot.start(),
-        nbot.start()
+        bot.run(),
+        nbot.run()
     )
 
 if __name__ == "__main__":
