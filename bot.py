@@ -102,12 +102,12 @@ class Bot(Client):
         await app.setup()
         bind_address = "0.0.0.0"
         await web.TCPSite(app, bind_address, PORT).start()
-        await Nbot().start()
+        Nbot().run()
 
     async def stop(self, *args):
         await super().stop()
         self.LOGGER.info("Bot stopped.")
 
 if __name__ == "__main__":
-    Bot().start()
+    Bot().run()
     
