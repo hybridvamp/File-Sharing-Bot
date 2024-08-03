@@ -9,6 +9,7 @@ database = dbclient[DB_NAME]
 
 mydb = dbclient["batch_files"]
 user_data = database['users']
+file_user = database['files']
 
 async def save_batch(string, Name):
     mycol = mydb["batches"]
@@ -77,8 +78,16 @@ async def present_user(user_id : int):
     found = user_data.find_one({'_id': user_id})
     return bool(found)
 
+async def present_user_file(user_id : int):
+    found = file_user.find_one({'_id': user_id})
+    return bool(found)
+
 async def add_user(user_id: int):
     user_data.insert_one({'_id': user_id})
+    return
+
+async def add_user_file(user_id: int):
+    file_user.insert_one({'_id': user_id})
     return
 
 async def full_userbase():
@@ -89,6 +98,18 @@ async def full_userbase():
         
     return user_ids
 
+async def full_userbase_file():
+    user_docs = file_user.find()
+    user_ids = []
+    for doc in user_docs:
+        user_ids.append(doc['_id'])
+        
+    return user_ids
+
 async def del_user(user_id: int):
     user_data.delete_one({'_id': user_id})
+    return
+
+async def del_user_file(user_id: int):
+    file_user.delete_one({'_id': user_id})
     return

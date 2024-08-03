@@ -1,14 +1,12 @@
 #(©)dramaost
 
-
-
-
 import asyncio
 
-from bot import Bot
+from bot import Bot, Nbot
+from temp import temp
 from config import (ADMINS, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, FORCE_MSG,
                     PROTECT_CONTENT, START_MSG, INVITE_LINK, LOG_ID, DONATE_MSG)
-from database.database import add_user, del_user, full_userbase, present_user
+from database.database import add_user, del_user, full_userbase, present_user, present_user_file, add_user_file, del_user_file, full_userbase_file
 from helper_func import decode, encode, get_messages, subscribed
 from pyrogram import Client, __version__, filters
 from pyrogram.enums import ParseMode
@@ -19,17 +17,33 @@ from pyrogram.types import Message
 
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
+@Nbot.on_message(filters.command('start') & filters.private)
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
     if not await present_user(id):
         try:
-            await add_user(id)
-            count = len(await full_userbase())
-            await client.send_message(LOG_ID, f"#IUBot #NewUser \n\nUser: {message.from_user.mention}\nID: {id}\n\nUsers count: {count}")
+            if client.username == "IUTheFileBot":
+                await add_user(id)
+                count = len(await full_userbase())
+                await client.send_message(LOG_ID, f"#IUBot #NewUser \n\nUser: {message.from_user.mention}\nID: {id}\n\nUsers count: {count}")
+            else:
+                await add_user_file(id)
+                count = len(await full_userbase_file())
+                await client.send_message(LOG_ID, f"#IUBot_File #NewUser \n\nUser: {message.from_user.mention}\nID: {id}\n\nUsers count: {count}")
         except:
             pass
     text = message.text
     if len(text)>7:
+        if client.username == "IUTheFileBot":
+            MARKUP = Markup(
+                [
+                    [
+                        Button("📁 Get files", url = f"https://t.me/{temp.FILE_UN}?start={message.command[1]}")
+                    ]
+                ]
+            )
+            await message.reply_text(f"Click the button below and start the bot for files 👇🏻")
+            return
         try:
             string = text.split(" ", 1)[1]
         except:
@@ -94,6 +108,9 @@ async def start_command(client: Client, message: Message):
                 pass
         return
     else:
+        if not client.username == "IUTheFileBot":
+            await message.reply_text(f"**Use @{client.username} !**")
+            return
         reply_markup = Markup(
             [
                 [
