@@ -7,6 +7,7 @@ from pyromod import listen
 from pyrogram import Client
 from pyrogram.enums import ParseMode
 import sys
+import asyncio
 from datetime import datetime
 
 from temp import temp
@@ -107,6 +108,10 @@ class Nbot(Client):
         temp.FILE_UN = file_bot_me.username
         self.LOGGER.info(f"@{temp.FILE_UN} Bot Running..!\n\nCreated by (c) Hybrid")
 
+async def main():
+    bot = Bot()
+    nbot = Nbot()
+    await asyncio.gather(bot.start(), nbot.start())
+
 if __name__ == "__main__":
-    Bot().run()
-    Nbot().run()
+    asyncio.run(main())
