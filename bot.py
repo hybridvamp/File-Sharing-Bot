@@ -107,6 +107,9 @@ class Nbot(Client):
         temp.FILE_UN = file_bot_me.username
         self.LOGGER.info(f"@{temp.FILE_UN} Bot Running..!\n\nCreated by (c) Hybrid")
 
+async def main():
+    await Bot().start()
+    await Nbot().start()
+
 if __name__ == "__main__":
-    Bot().start()
-    Nbot().start()
+    asyncio.run(main())
