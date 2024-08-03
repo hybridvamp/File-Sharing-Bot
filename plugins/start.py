@@ -42,7 +42,7 @@ async def start_command(client: Client, message: Message):
                     ]
                 ]
             )
-            await message.reply_text(f"Click the button below and start the bot for files 👇🏻")
+            await message.reply_text(f"Click the button below and start the bot for files 👇🏻", reply_markup=MARKUP)
             return
         try:
             string = text.split(" ", 1)[1]
