@@ -1,6 +1,5 @@
 #(©)dramaost
 
-import asyncio
 from aiohttp import web
 from plugins import web_server
 
@@ -21,6 +20,25 @@ BANNER = f"""\n\n
 ██║░░██║░░░██║░░░██████╦╝██║░░██║██║██████╔╝
 ╚═╝░░╚═╝░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚═╝╚═════╝░
 """
+
+class Nbot(Client):
+    def __init__(self):
+        super().__init__(
+            name="Nbot",
+            api_hash=API_HASH,
+            api_id=APP_ID,
+            plugins={
+                "root": "plugins"
+            },
+            workers=TG_BOT_WORKERS,
+            bot_token=FILE_BOT_TOKEN
+        )
+        self.LOGGER = LOGGER(__name__)
+    async def start(self):
+        await super().start()
+        file_bot_me = await self.get_me()
+        temp.FILE_UN = file_bot_me.username
+        self.LOGGER.info(f"@{temp.FILE_UN} Bot Running..!\n\nCreated by (c) Hybrid")
 
 class Bot(Client):
     def __init__(self):
@@ -84,33 +102,12 @@ class Bot(Client):
         await app.setup()
         bind_address = "0.0.0.0"
         await web.TCPSite(app, bind_address, PORT).start()
+        Nbot().start()
 
     async def stop(self, *args):
         await super().stop()
         self.LOGGER.info("Bot stopped.")
 
-class Nbot(Client):
-    def __init__(self):
-        super().__init__(
-            name="Nbot",
-            api_hash=API_HASH,
-            api_id=APP_ID,
-            plugins={
-                "root": "plugins"
-            },
-            workers=TG_BOT_WORKERS,
-            bot_token=FILE_BOT_TOKEN
-        )
-        self.LOGGER = LOGGER(__name__)
-    async def start(self):
-        await super().start()
-        file_bot_me = await self.get_me()
-        temp.FILE_UN = file_bot_me.username
-        self.LOGGER.info(f"@{temp.FILE_UN} Bot Running..!\n\nCreated by (c) Hybrid")
-
-async def main():
-    await Bot().start()
-    await Nbot().start()
-
 if __name__ == "__main__":
-    asyncio.run(main())
+    Bot().start()
+    
