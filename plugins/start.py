@@ -42,11 +42,11 @@ async def start_command(client: Client, message: Message):
             MARKUP = Markup(
                 [
                     [
-                        Button("📁 Get files", url = f"https://t.me/{temp.FILE_UN}?start={message.command[1]}")
+                        Button("📁 Download files now", url = f"https://t.me/{temp.FILE_UN}?start={message.command[1]}")
                     ]
                 ]
             )
-            await message.reply_text(f"Click the button below and start the bot for files 👇🏻", reply_markup=MARKUP)
+            await message.reply_text(f"<i>⚠️ To prevent copyright we moved file sharing to a seperate bot</i>\n\n<b>Click the button below and start the bot for files 👇🏻</b>", reply_markup=MARKUP)
             return
         try:
             string = text.split(" ", 1)[1]
@@ -153,13 +153,22 @@ REPLY_ERROR = """<code>Use this command as a reply to any telegram message witho
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
     id = message.from_user.id
-    if not await present_user(id):
-        try:
-            await add_user(id)
-            count = len(await full_userbase())
-            await client.send_message(LOG_ID, f"#IUBot #NewUser \n\nUser: {message.from_user.mention}\nID: {id}\n\nUsers count: {count}")
-        except:
-            pass
+    if client.username == "IUTheFileBot":
+        if not await present_user(id):
+            try:
+                await add_user(id)
+                count = len(await full_userbase())
+                await client.send_message(LOG_ID, f"#IUBot #NewUser \n\nUser: {message.from_user.mention}\nID: {id}\n\nUsers count: {count}")
+            except:
+                pass
+    else:
+        if not await present_user_file(id):
+            try:
+                await add_user_file(id)
+                count = len(await full_userbase_file())
+                await client.send_message(LOG_ID, f"#IUBot_File #NewUser \n\nUser: {message.from_user.mention}\nID: {id}\n\nUsers count: {count}")
+            except:
+                pass
     url = INVITE_LINK
     buttons = [
         [
