@@ -160,10 +160,8 @@ async def main():
     bot = Bot()
     nbot = Nbot()
     
-    await asyncio.gather(
-        bot.start(),
-        nbot.start()
-    )
+    await bot.start()
+    await nbot.start()
     await idle()
 
 if __name__ == "__main__":
