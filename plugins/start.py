@@ -2,7 +2,7 @@
 
 import asyncio
 
-from bot import Bot, Nbot
+from bot import Bot
 from temp import temp
 from config import (ADMINS, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, FORCE_MSG,
                     PROTECT_CONTENT, START_MSG, INVITE_LINK, LOG_ID, DONATE_MSG)
@@ -17,7 +17,7 @@ from pyrogram.types import Message
 
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
-@Nbot.on_message(filters.command('start') & filters.private & subscribed)
+# @Nbot.on_message(filters.command('start') & filters.private)
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
     if client.username == "IUTheFileBot":
@@ -149,7 +149,7 @@ REPLY_ERROR = """<code>Use this command as a reply to any telegram message witho
 
 #=====================================================================================##
 
-@Nbot.on_message(filters.command('start') & filters.private)    
+    
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
     id = message.from_user.id
