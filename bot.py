@@ -1,16 +1,17 @@
 #(©)dramaost
 
+import asyncio
 from aiohttp import web
 from plugins import web_server
 
 from pyromod import listen
-from pyrogram import Client
+from pyrogram import Client, idle
 from pyrogram.enums import ParseMode
 import sys
 from datetime import datetime
 
 from temp import temp
-from config import API_HASH, APP_ID, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNELS, CHANNEL_ID, PORT, FILE_BOT_UN
+from config import API_HASH, APP_ID, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNELS, CHANNEL_ID, PORT, FILE_BOT_UN, FILE_BOT_TOKEN
 
 BANNER = f"""\n\n
 ██╗░░██╗██╗░░░██╗██████╗░██████╗░██╗██████╗░
@@ -89,25 +90,38 @@ class Bot(Client):
         await super().stop()
         self.LOGGER.info("Bot stopped.")
 
-# class Nbot(Client):
-#     def __init__(self):
-#         super().__init__(
-#             name="Nbot",
-#             api_hash=API_HASH,
-#             api_id=APP_ID,
-#             plugins={
-#                 "root": "plugins"
-#             },
-#             workers=TG_BOT_WORKERS,
-#             bot_token=FILE_BOT_TOKEN
-#         )
-#         self.LOGGER = LOGGER(__name__)
-#     async def start(self):
-#         await super().start()
-#         file_bot_me = await self.get_me()
-#         temp.FILE_UN = file_bot_me.username
-#         self.LOGGER.info(f"@{temp.FILE_UN} Bot Running..!\n\nCreated by (c) Hybrid")
+class Nbot(Client):
+    def __init__(self):
+        super().__init__(
+            name="Nbot",
+            api_hash=API_HASH,
+            api_id=APP_ID,
+            plugins={
+                "root": "plugins"
+            },
+            workers=TG_BOT_WORKERS,
+            bot_token=FILE_BOT_TOKEN
+        )
+        self.LOGGER = LOGGER(__name__)
+    async def start(self):
+        await super().start()
+        file_bot_me = await self.get_me()
+        temp.FILE_UN = file_bot_me.username
+        self.LOGGER.info(f"@{temp.FILE_UN} Bot Running..!\n\nCreated by (c) Hybrid")
+
+async def main():
+    bot = Bot()
+    nbot = Nbot()
+    
+    await asyncio.gather(
+        bot.start(),
+        nbot.start()
+    )
+    await idle()
 
 if __name__ == "__main__":
-    Bot().run()
+    asyncio.run(main())
+
+# if __name__ == "__main__":
+#     Bot().run()
     # Nbot().run()
