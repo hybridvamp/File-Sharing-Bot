@@ -158,14 +158,17 @@ class Nbot(Client):
 
 async def main():
     bot = Bot()
-    nbot = Nbot()
-    
     await bot.start()
+    await idle()
+
+async def main2():
+    nbot = Nbot()
     await nbot.start()
     await idle()
 
 if __name__ == "__main__":
     asyncio.run(main())
+    asyncio.run(main2())
 
 # if __name__ == "__main__":
 #     Bot().run()
