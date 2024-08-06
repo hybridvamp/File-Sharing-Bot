@@ -75,6 +75,7 @@ class Bot(Client):
             self.LOGGER.warning(f"Make Sure bot is Admin in DB Channel, and Double check the CHANNEL_ID Value, Current Value {CHANNEL_ID}")
             self.panic()
 
+        self.LOGGER.info(f"{BANNER}")
         self.set_parse_mode(ParseMode.HTML)
         self.username = usr_bot_me.username
         self.LOGGER.info(f"@{self.username} Bot Running..!")
