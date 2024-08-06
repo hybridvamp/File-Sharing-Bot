@@ -205,7 +205,10 @@ async def not_joined(client: Client, message: Message):
 @Bot.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
 async def get_users(client: Bot, message: Message):
     msg = await client.send_message(chat_id=message.chat.id, text=WAIT_MSG)
-    users = await full_userbase()
+    if client.username == "IUTheFileBot":
+        users = await full_userbase()
+    else:
+        users = await full_userbase_file()
     await msg.edit(f"{len(users)} users are using this bot")
 
 @Bot.on_message(filters.private & filters.command('broadcast') & filters.user(ADMINS))
@@ -213,7 +216,10 @@ async def send_text(client: Bot, message: Message):
     if message.reply_to_message:
         args = message.text.split()
         if len(args) == 1:
-            query = await full_userbase()
+            if client.username == "IUTheFileBot":
+                query = await full_userbase()
+            else:
+                query = await full_userbase_file()
             broadcast_msg = message.reply_to_message
             total = 0
             successful = 0

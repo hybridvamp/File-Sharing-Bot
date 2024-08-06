@@ -5,7 +5,7 @@ from pyrogram import filters
 from config import ADMINS, BOT_STATS_TEXT, USER_REPLY_TEXT
 from datetime import datetime
 from helper_func import get_readable_time
-from database.database import full_userbase
+from database.database import full_userbase, full_userbase_file
 
 @Bot.on_message(filters.command('stats') & filters.user(ADMINS))
 async def stats(bot: Bot, message: Message):
@@ -16,7 +16,10 @@ async def stats(bot: Bot, message: Message):
 @Bot.on_message(filters.command("list") & filters.user(ADMINS))
 async def get_users_ids(client, message: Message):
     reply_message = await message.reply_text("Checking users count...")
-    user_ids = await full_userbase()    
+    if client.username == "IUTheFileBot":
+        user_ids = await full_userbase() 
+    else:
+        user_ids = await full_userbase_file() 
     
     await reply_message.edit_text(f"{len(user_ids)} users found on db")
     await reply_message.edit_text(f"{len(user_ids)} users found on db \n**Creating userlist file...**")
